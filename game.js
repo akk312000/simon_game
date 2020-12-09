@@ -54,12 +54,19 @@ function checkAnswer(currentLevel)
     $("body").addClass("game-over");
     setTimeout(function(){
     $("body").removeClass("game-over");},200);
+    $(window).scrollTop(0);
 
-$("#level-title").text("Game Over, Press Any Key to Restart");
+$("#level-title").text("Game Over, Press Spacebar to Restart");
 startOver();
   }
 
 }
+
+$(document).on('touchstart', function(e) {
+  if(started==false)
+  {started=true;
+  $("#level-title").text("Level "+level);nextSequence();}
+});
 function nextSequence()
 {
   userClickedPattern=[];
