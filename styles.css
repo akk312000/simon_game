@@ -7,7 +7,17 @@ body {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
-  color: #FEF2BF;
+  color: #fcf4cf;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 .container {

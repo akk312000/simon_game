@@ -98,10 +98,14 @@ function startOver()
 
 function highScore(score) {
    var saved = 0;
+   var ep="";
    try { saved = parseFloat(localStorage.highScore); } catch (e) { saved = 0; }
    if (!(typeof score === 'undefined')) {
       try { score = parseFloat(score); } catch (e) { score = 0; }
       if (score>saved) {
+        ep="New ";
+        var bb=true;blink(bb);
+        bb=false;
         saved = score;
         localStorage.highScore = '' + score;
       }
@@ -110,5 +114,12 @@ function highScore(score) {
       saved = 0;
       localStorage.highScore = '0';
    }
-     $("#high-score").text("High Score:"+saved);
+     $("#high-score").text(ep+"High Score:"+saved);
+     ep="";
+}
+function blink(bb)
+{
+  if(bb==true)
+  {$("#high-score").fadeOut(500).fadeIn(500,blink);}
+
 }
