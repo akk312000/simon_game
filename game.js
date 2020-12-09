@@ -4,6 +4,10 @@ var buttonColours=["red","blue","green","yellow"];
 var userClickedPattern=[];
 var level=0;
 var started=false;
+if (window.matchMedia("(max-width: 767px)").matches)
+{
+  $("#level-title").text("Touch anywhere to Start");
+}
 $(document).keypress(function()
 {
 
@@ -56,7 +60,14 @@ function checkAnswer(currentLevel)
     $("body").removeClass("game-over");},200);
     $(window).scrollTop(0);
 
-$("#level-title").text("Game Over, Press Spacebar to Restart");
+    if (window.matchMedia("(max-width: 767px)").matches)
+    {
+      $("#level-title").text("Game Over, Touch anywhere to Restart");
+    }
+    else{
+      $("#level-title").text("Game Over, Press Spacebar to Restart");
+    }
+
 startOver();
   }
 
