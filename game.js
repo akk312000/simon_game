@@ -56,6 +56,7 @@ function nextSequence()
 {
   userClickedPattern=[];
   level++;
+  highScore(level);
     $("#level-title").text("Level "+level);
 var randomNumber=(Math.floor(Math.random()*4));
 var randomChosenColour=buttonColours[randomNumber];
@@ -85,4 +86,21 @@ function startOver()
   level=0;
   gamePattern=[];
   started=false;
+}
+
+function highScore(score) {
+   var saved = 0;
+   try { saved = parseFloat(localStorage.highScore); } catch (e) { saved = 0; }
+   if (!(typeof score === 'undefined')) {
+      try { score = parseFloat(score); } catch (e) { score = 0; }
+      if (score>saved) {
+        saved = score;
+        localStorage.highScore = '' + score;
+      }
+   }
+   if (isNaN(saved)) {
+      saved = 0;
+      localStorage.highScore = '0';
+   }
+     $("#high-score").text("High Score:"+saved);
 }
